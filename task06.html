@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        function getResultString(Num){
+            let str_num = String(Num)
+            let last_char = str_num.charAt(str.length-1)
+            let pre_last_char
+            if(str_num.length > 1){
+                pre_last_char = str_num.charAt(str.length-2)
+            }
+            //если от 10 до 19 то рублей
+            if(pre_last_char == '1'){
+                return Num + ' рублей'
+            }
+            //если остальные варианты то проверяем 
+            switch(last_char){
+                case '2':
+                case '3':
+                case '4':
+                    return Num + ' рубля'
+                case '1':
+                    return Num + ' рубль'
+                default :
+                    return Num + ' рублей'
+            }
+        }
+        
+        let str = prompt("введите сумму")
+        alert(getResultString(str))
+
+    </script>
+</body>
+</html>
