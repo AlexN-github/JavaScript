@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        class Obj{
+            constructor(){
+                this.unit = 0
+                this.tens = 0
+                this.hunders = 0
+            }
+            get vNum(){
+                return 'hunders:'+this.hunders+'; tens: '+this.tens+'; unit: '+this.unit
+            }
+            set vNum(num){
+                if(Number.isInteger(num) && num <= 999){
+                    let str_num = num.toString();
+                    for(let i=0;i < str_num.length ;i++){
+                        let pos = str_num.length-1-i
+                        switch(i){
+                            case 0: this.unit = parseInt(str_num.charAt(pos))
+                                    break
+                            case 1: this.tens = parseInt(str_num.charAt(pos))
+                                    break
+                            case 2: this.hunders = parseInt(str_num.charAt(pos))
+                                    break
+                        }
+                    }
+                } else {
+                    throw new Error("Error , the entered number does not satisfy the conditions");
+                }
+            }
+        }
+        
+        let o1 = new Obj
+        o1.vNum = 188.1
+        console.log(o1.vNum)
+    </script>
+</body>
+</html>
